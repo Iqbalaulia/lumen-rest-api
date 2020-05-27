@@ -35,4 +35,32 @@ class ProductsController extends Controller
         return response()->json($products);
 
     }
+
+    public function update(Request $request, $id){
+
+       
+        
+        $products = Products::find($id);
+
+        if(!$products){
+            return response()->json(['message' => 'Product Not Found!'], 404);
+        }
+
+        $this->validate($request, [
+            'nama' => 'string',
+            'harga' => 'integer',
+            'warna' => 'string',
+            'kondisi' => 'in:baru,lama',
+            'deskripsi' => 'string'
+        ]);
+
+        $data = $request->all();
+        
+        $products->fill($data);
+        
+        $products->save();
+
+        return response()->json($products);
+
+    }
 }
