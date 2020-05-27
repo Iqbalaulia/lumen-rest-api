@@ -18,3 +18,4 @@ $router->put('/products/index/{id}', 'ProductsController@update');
 $router->delete('/products/index/{id}', 'ProductsController@destroy');
 
 $router->post('/register', 'UserController@register');
+$router->post('/login', 'UserController@login');
