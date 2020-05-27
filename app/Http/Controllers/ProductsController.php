@@ -12,6 +12,12 @@ class ProductsController extends Controller
 
     }
 
+    public function show($id){
+
+        $products = Products::findOrFail($id);
+        return response()->json($products);
+    }
+
     public function create(Request $request){
 
         $this->validate($request, [
