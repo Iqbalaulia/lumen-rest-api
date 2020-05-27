@@ -8,6 +8,14 @@ class ProductsController extends Controller
 {
 
     public function create(Request $request){
+
+        $this->validate($request, [
+            'nama' => 'required|string',
+            'harga' => 'required|integer',
+            'warna' => 'required|string',
+            'kondisi' => 'required|in:baru,lama',
+            'deskripsi' => 'string'
+        ]);
         
         $data = $request->all();
 
